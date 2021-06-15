@@ -53,6 +53,15 @@ render <- function(data, tour_path, display, dev, ..., apf = 1 / 10, frames = 50
       loop = numeric()
     )
 
+  record_odd <-
+    dplyr::tibble(
+      basis = list(),
+      scags = list(),
+      info = character(),
+      pc = list(),
+      hscv = list()
+    )
+
   tour <- new_tour(data, tour_path, start, ...)
   step <- tour(0, ...)
 

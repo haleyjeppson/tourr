@@ -49,6 +49,14 @@ animate <- function(data, tour_path = grand_tour(), display = display_xy(),
       tries = numeric(),
       loop = numeric()
     )
+  record_odd <-
+    dplyr::tibble(
+      basis = list(),
+      scags = list(),
+      info = character(),
+      pc = list(),
+      hscv = list()
+    )
   if (!is.matrix(data)) {
     message("Converting input data to the required matrix format.")
     data <- as.matrix(data)
@@ -122,7 +130,9 @@ animate <- function(data, tour_path = grand_tour(), display = display_xy(),
     invisible(bases[, , seq_len(b)])
   }
 
+  # invisible(record_odd)
   invisible(record)
+
 
   # Need a better way to clean up global variables than this
   # suppressWarnings(rm(tries, cur_index, current, t0, record, envir = globalenv()))
